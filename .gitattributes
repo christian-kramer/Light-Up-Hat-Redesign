@@ -1,4 +1,4 @@
 *.mk linguist-generated=true
 *.xml linguist-generated=true
 Makefile linguist-generated=true
-Package-default linguist-generated=true
+Package-default.bash linguist-generated=true
