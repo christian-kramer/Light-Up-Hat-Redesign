@@ -382,17 +382,17 @@ F 3 "" H 9300 5400 50  0001 C CNN
 	1    9300 5400
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	2700 5100 3050 5100
 $Comp
-L Transistor_BJT:2N3906 Q1
-U 1 1 5DB0F78B
+L Transistor_BJT:MMBT3906 Q1
+U 1 1 5DD09D79
 P 2600 4900
 F 0 "Q1" H 2791 4854 50  0000 L CNN
-F 1 "2N3906" H 2791 4945 50  0000 L CNN
+F 1 "MMBT3906" H 2791 4945 50  0000 L CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 2800 4825 50  0001 L CIN
 F 3 "https://www.fairchildsemi.com/datasheets/2N/2N3906.pdf" H 2600 4900 50  0001 L CNN
 	1    2600 4900
 	1    0    0    1   
 $EndComp
-Wire Wire Line
-	2700 5100 3050 5100
 $EndSCHEMATC
