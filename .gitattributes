@@ -1,2 +1,3 @@
 *.mk linguist-generated=true
 *.xml linguist-generated=true
+Makefile linguist-generated=true
