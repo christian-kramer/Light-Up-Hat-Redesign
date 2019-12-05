@@ -1,19 +1,19 @@
 [p LITE_MODE AUTOSTATIC IEEE_DBL IEEE_FLT PIC12 PICREGULAR PIC12COM ]
 [d version 1.1 ]
 [d edition pro ]
-[d chip 10F220 ]
+[d chip 10F200 ]
 [d frameptr 6 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"26 L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
+"26 L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\PIC10F200.X\main.c
 [v _main main `(i  1 e 2 0 ]
-[s S23 . 1 `uc 1 FOSC4 1 0 :1:0 
+[s S22 . 1 `uc 1 FOSC4 1 0 :1:0 
 `uc 1 CAL 1 0 :7:1 
 ]
-"219 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic10f220.h
-[s S26 . 1 `uc 1 . 1 0 :1:0 
+"219 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic10f200.h
+[s S25 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 CAL0 1 0 :1:1 
 `uc 1 CAL1 1 0 :1:2 
 `uc 1 CAL2 1 0 :1:3 
@@ -22,16 +22,22 @@
 `uc 1 CAL5 1 0 :1:6 
 `uc 1 CAL6 1 0 :1:7 
 ]
-[u S35 . 1 `S23 1 . 1 0 `S26 1 . 1 0 ]
-[v _OSCCALbits OSCCALbits `VES35  1 e 1 @5 ]
+[u S34 . 1 `S22 1 . 1 0 `S25 1 . 1 0 ]
+[v _OSCCALbits OSCCALbits `VES34  1 e 1 @5 ]
 "269
 [v _GPIO GPIO `VEuc  1 e 1 @6 ]
-"459
+"307
 [v _OPTION OPTION `VEWuc  1 e 1 @0 ]
-"467
+"315
 [v _TRISGPIO TRISGPIO `VEWuc  1 e 1 @6 ]
-"26 L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
+"26 L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\PIC10F200.X\main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"45
+"43
+[v main@lengthcount lengthcount `ui  1 a 2 7 ]
+"31
+[v main@ledstate ledstate `uc  1 a 1 9 ]
+"33
+[v main@flashcounter flashcounter `uc  1 a 1 6 ]
+"89
 } 0

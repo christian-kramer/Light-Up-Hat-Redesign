@@ -7,16 +7,7 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-
-
-
-
-
-
-
-
-#pragma config IOSCFS = 8MHZ
-#pragma config MCPU = ON
+# 10 "main.c"
 #pragma config WDTE = OFF
 #pragma config CP = OFF
 #pragma config MCLRE = ON
@@ -63,11 +54,11 @@ extern void __builtin_software_breakpoint(void);
 
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic_chip_select.h" 1 3
-# 233 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic_chip_select.h" 3
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f220.h" 1 3
-# 44 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f220.h" 3
+# 193 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic_chip_select.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f200.h" 1 3
+# 44 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f200.h" 3
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\__at.h" 1 3
-# 44 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f220.h" 2 3
+# 44 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f200.h" 2 3
 
 
 
@@ -87,7 +78,7 @@ typedef union {
     };
 } INDFbits_t;
 extern volatile INDFbits_t INDFbits __attribute__((address(0x000)));
-# 72 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f220.h" 3
+# 72 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f200.h" 3
 extern volatile unsigned char TMR0 __attribute__((address(0x001)));
 
 __asm("TMR0 equ 01h");
@@ -99,7 +90,7 @@ typedef union {
     };
 } TMR0bits_t;
 extern volatile TMR0bits_t TMR0bits __attribute__((address(0x001)));
-# 92 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f220.h" 3
+# 92 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f200.h" 3
 extern volatile unsigned char PCL __attribute__((address(0x002)));
 
 __asm("PCL equ 02h");
@@ -111,7 +102,7 @@ typedef union {
     };
 } PCLbits_t;
 extern volatile PCLbits_t PCLbits __attribute__((address(0x002)));
-# 112 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f220.h" 3
+# 112 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f200.h" 3
 extern volatile unsigned char STATUS __attribute__((address(0x003)));
 
 __asm("STATUS equ 03h");
@@ -134,7 +125,7 @@ typedef union {
     };
 } STATUSbits_t;
 extern volatile STATUSbits_t STATUSbits __attribute__((address(0x003)));
-# 178 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f220.h" 3
+# 178 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f200.h" 3
 extern volatile unsigned char FSR __attribute__((address(0x004)));
 
 __asm("FSR equ 04h");
@@ -146,7 +137,7 @@ typedef union {
     };
 } FSRbits_t;
 extern volatile FSRbits_t FSRbits __attribute__((address(0x004)));
-# 198 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f220.h" 3
+# 198 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f200.h" 3
 extern volatile unsigned char OSCCAL __attribute__((address(0x005)));
 
 __asm("OSCCAL equ 05h");
@@ -169,7 +160,7 @@ typedef union {
     };
 } OSCCALbits_t;
 extern volatile OSCCALbits_t OSCCALbits __attribute__((address(0x005)));
-# 269 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f220.h" 3
+# 269 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f200.h" 3
 extern volatile unsigned char GPIO __attribute__((address(0x006)));
 
 __asm("GPIO equ 06h");
@@ -184,58 +175,7 @@ typedef union {
     };
 } GPIObits_t;
 extern volatile GPIObits_t GPIObits __attribute__((address(0x006)));
-# 307 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f220.h" 3
-extern volatile unsigned char ADCON0 __attribute__((address(0x007)));
-
-__asm("ADCON0 equ 07h");
-
-
-typedef union {
-    struct {
-        unsigned ADON :1;
-        unsigned GO_nDONE :1;
-        unsigned CHS :2;
-        unsigned :2;
-        unsigned ANS :2;
-    };
-    struct {
-        unsigned :1;
-        unsigned GO :1;
-        unsigned CHS0 :1;
-        unsigned CHS1 :1;
-        unsigned :2;
-        unsigned ANS0 :1;
-        unsigned ANS1 :1;
-    };
-    struct {
-        unsigned :1;
-        unsigned nDONE :1;
-    };
-} ADCON0bits_t;
-extern volatile ADCON0bits_t ADCON0bits __attribute__((address(0x007)));
-# 389 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f220.h" 3
-extern volatile unsigned char ADRES __attribute__((address(0x008)));
-
-__asm("ADRES equ 08h");
-
-
-typedef union {
-    struct {
-        unsigned ADRES :8;
-    };
-    struct {
-        unsigned ADRES0 :1;
-        unsigned ADRES1 :1;
-        unsigned ADRES2 :1;
-        unsigned ADRES3 :1;
-        unsigned ADRES4 :1;
-        unsigned ADRES5 :1;
-        unsigned ADRES6 :1;
-        unsigned ADRES7 :1;
-    };
-} ADRESbits_t;
-extern volatile ADRESbits_t ADRESbits __attribute__((address(0x008)));
-# 459 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f220.h" 3
+# 307 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f200.h" 3
 extern volatile __control unsigned char OPTION __attribute__((address(0x000)));
 
 
@@ -245,40 +185,7 @@ extern volatile __control unsigned char TRIS __attribute__((address(0x006)));
 
 
 extern volatile __control unsigned char TRISGPIO __attribute__((address(0x006)));
-# 490 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f220.h" 3
-extern volatile __bit ADON __attribute__((address(0x38)));
-
-
-extern volatile __bit ADRES0 __attribute__((address(0x40)));
-
-
-extern volatile __bit ADRES1 __attribute__((address(0x41)));
-
-
-extern volatile __bit ADRES2 __attribute__((address(0x42)));
-
-
-extern volatile __bit ADRES3 __attribute__((address(0x43)));
-
-
-extern volatile __bit ADRES4 __attribute__((address(0x44)));
-
-
-extern volatile __bit ADRES5 __attribute__((address(0x45)));
-
-
-extern volatile __bit ADRES6 __attribute__((address(0x46)));
-
-
-extern volatile __bit ADRES7 __attribute__((address(0x47)));
-
-
-extern volatile __bit ANS0 __attribute__((address(0x3E)));
-
-
-extern volatile __bit ANS1 __attribute__((address(0x3F)));
-
-
+# 338 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic10f200.h" 3
 extern volatile __bit CAL0 __attribute__((address(0x29)));
 
 
@@ -303,22 +210,10 @@ extern volatile __bit CAL6 __attribute__((address(0x2F)));
 extern volatile __bit CARRY __attribute__((address(0x18)));
 
 
-extern volatile __bit CHS0 __attribute__((address(0x3A)));
-
-
-extern volatile __bit CHS1 __attribute__((address(0x3B)));
-
-
 extern volatile __bit DC __attribute__((address(0x19)));
 
 
 extern volatile __bit FOSC4 __attribute__((address(0x28)));
-
-
-extern volatile __bit GO __attribute__((address(0x39)));
-
-
-extern volatile __bit GO_nDONE __attribute__((address(0x39)));
 
 
 extern volatile __bit GP0 __attribute__((address(0x30)));
@@ -339,14 +234,11 @@ extern volatile __bit GPWUF __attribute__((address(0x1F)));
 extern volatile __bit ZERO __attribute__((address(0x1A)));
 
 
-extern volatile __bit nDONE __attribute__((address(0x39)));
-
-
 extern volatile __bit nPD __attribute__((address(0x1B)));
 
 
 extern volatile __bit nTO __attribute__((address(0x1C)));
-# 233 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic_chip_select.h" 2 3
+# 193 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic_chip_select.h" 2 3
 # 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic.h" 2 3
 # 30 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\pic.h" 3
 #pragma intrinsic(__nop)
@@ -377,7 +269,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 2 3
-# 18 "main.c" 2
+# 17 "main.c" 2
 
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdio.h" 1 3
@@ -477,7 +369,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 #pragma printf_check(sprintf) const
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
-# 20 "main.c" 2
+# 19 "main.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdlib.h" 1 3
 
@@ -562,6 +454,141 @@ extern char * ltoa(char * buf, long val, int base);
 extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
+# 20 "main.c" 2
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdint.h" 1 3
+# 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int8_t;
+
+
+
+
+
+
+typedef signed int int16_t;
+
+
+
+
+
+
+
+typedef __int24 int24_t;
+
+
+
+
+
+
+
+typedef signed long int int32_t;
+# 52 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint8_t;
+
+
+
+
+
+typedef unsigned int uint16_t;
+
+
+
+
+
+
+typedef __uint24 uint24_t;
+
+
+
+
+
+
+typedef unsigned long int uint32_t;
+# 88 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int_least8_t;
+
+
+
+
+
+
+
+typedef signed int int_least16_t;
+# 109 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdint.h" 3
+typedef __int24 int_least24_t;
+# 118 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdint.h" 3
+typedef signed long int int_least32_t;
+# 136 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint_least8_t;
+
+
+
+
+
+
+typedef unsigned int uint_least16_t;
+# 154 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdint.h" 3
+typedef __uint24 uint_least24_t;
+
+
+
+
+
+
+
+typedef unsigned long int uint_least32_t;
+# 181 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int_fast8_t;
+
+
+
+
+
+
+typedef signed int int_fast16_t;
+# 200 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdint.h" 3
+typedef __int24 int_fast24_t;
+
+
+
+
+
+
+
+typedef signed long int int_fast32_t;
+# 224 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint_fast8_t;
+
+
+
+
+
+typedef unsigned int uint_fast16_t;
+# 240 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdint.h" 3
+typedef __uint24 uint_fast24_t;
+
+
+
+
+
+
+typedef unsigned long int uint_fast32_t;
+# 268 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdint.h" 3
+typedef int32_t intmax_t;
+# 282 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c90\\stdint.h" 3
+typedef uint32_t uintmax_t;
+
+
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
 # 21 "main.c" 2
 
 
@@ -569,22 +596,66 @@ extern char * ftoa(float f, int * status);
 
 
 int main(int argc, char** argv) {
-
-    OPTION = 0b00000000;
     OSCCALbits.FOSC4 = 0;
+    OPTION = 0b10000000;
     TRISGPIO = 0b00000010;
 
-    while (1) {
+    uint8_t ledstate = 0;
+
+    uint8_t flashcounter = 0;
+
+
+    while(1) {
+
+        if (!((GPIO >> 1) & 1U)) {
+
+            _delay((unsigned long)((50)*(4000000/4000.0)));
+            if (!((GPIO >> 1) & 1U)) {
+
+                uint16_t lengthcount = 0;
+
+                while((!((GPIO >> 1) & 1U)) && lengthcount < 2000){
+
+                    lengthcount++;
+                    _delay((unsigned long)((1)*(4000000/4000.0)));
+                };
+
+                if (lengthcount < 500) {
 
 
 
+                    if ((ledstate >> 3) & 1U) {
+
+                        ledstate &= ~(1UL << 3);
+                        ledstate &= ~(1UL << 2);
+                    } else {
+
+                        ledstate ^= 1UL << 2;
 
 
-        GPIO = 0b00000100;
-        _delay((unsigned long)((1000)*(8000000/4000.0)));
-        GPIO = 0b00000000;
-        _delay((unsigned long)((1000)*(8000000/4000.0)));
+                        ledstate &= ~(1UL << 3);
+                    }
+                } else {
 
+
+
+                    ledstate |= 1UL << 3;
+                }
+            }
+        }
+
+        if ((ledstate >> 3) & 1U) {
+
+            if (++flashcounter > 100) {
+                flashcounter = 0;
+                GPIO ^= 1UL << 2;
+            }
+            _delay((unsigned long)((1)*(4000000/4000.0)));
+        } else {
+
+            GPIO ^= (-(!((ledstate >> 2) & 1U)) ^ GPIO) & (1UL << 2);
+        }
     }
+
     return (0);
 }

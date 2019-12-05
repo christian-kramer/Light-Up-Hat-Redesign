@@ -25,15 +25,21 @@
  */
 int main(int argc, char** argv) {
 
+    OPTION = 0b00000000;
     OSCCALbits.FOSC4 = 0; //disable oscillator output on GP2
-    OPTION = 0b01000000;
-    TRISGPIO = 0b00000000;
+    TRISGPIO = 0b00000010;
     
     while (1) {
+        
+        //if ((GPIO >> 1) & 1U) {
+            //GPIO ^= 1UL << 2;
+        //}
+        
         GPIO = 0b00000100;
         __delay_ms(1000);
         GPIO = 0b00000000;
         __delay_ms(1000);
+        
     }
     return (EXIT_SUCCESS);
 }

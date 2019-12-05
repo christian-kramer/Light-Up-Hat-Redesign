@@ -15,7 +15,7 @@ $dist/default/production\Main.X.production.o
 cinit ENTRY 0 1 1 2 2
 maintext CODE 0 3 3 26 2
 cstackBANK0 BANK0 1 10 10 7 1
-$C:\Users\flyhi\AppData\Local\Temp\s9sg.o
+$C:\Users\flyhi\AppData\Local\Temp\sqto.o
 reset_vec CODE 0 FF FF 1 2
 end_init ENTRY 0 0 0 1 2
 config CONFIG 0 FFF FFF 1 2
@@ -48,22 +48,22 @@ STRING 29-FE 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Main.X.production.o
-1 cinit ENTRY >130:C:\Users\flyhi\AppData\Local\Temp\s9sg.
-1 cinit ENTRY >133:C:\Users\flyhi\AppData\Local\Temp\s9sg.
-1 cinit ENTRY >139:C:\Users\flyhi\AppData\Local\Temp\s9sg.
-1 cinit ENTRY >141:C:\Users\flyhi\AppData\Local\Temp\s9sg.
-2 cinit ENTRY >142:C:\Users\flyhi\AppData\Local\Temp\s9sg.
+1 cinit ENTRY >130:C:\Users\flyhi\AppData\Local\Temp\sqto.
+1 cinit ENTRY >133:C:\Users\flyhi\AppData\Local\Temp\sqto.
+1 cinit ENTRY >139:C:\Users\flyhi\AppData\Local\Temp\sqto.
+1 cinit ENTRY >141:C:\Users\flyhi\AppData\Local\Temp\sqto.
+2 cinit ENTRY >142:C:\Users\flyhi\AppData\Local\Temp\sqto.
 3 maintext CODE >26:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
 3 maintext CODE >28:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
-4 maintext CODE >29:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
+5 maintext CODE >29:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
 6 maintext CODE >30:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
 9 maintext CODE >32:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
-9 maintext CODE >33:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
-B maintext CODE >34:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
-18 maintext CODE >35:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
-19 maintext CODE >36:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
-27 maintext CODE >37:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
-28 maintext CODE >39:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
+9 maintext CODE >38:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
+B maintext CODE >39:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
+18 maintext CODE >40:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
+19 maintext CODE >41:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
+27 maintext CODE >43:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
+28 maintext CODE >45:L:\Documents\GitHub\Light-Up-Hat-Redesign\Electrical\Firmware\Main.X\main.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -86,10 +86,10 @@ _TRISGPIO 6 0 ABS 0 - dist/default/production\Main.X.production.o
 ltemp0 1C 0 ABS 0 - dist/default/production\Main.X.production.o
 __Hstrings 0 0 STRING 0 strings -
 _GPIO 6 0 ABS 0 - dist/default/production\Main.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\flyhi\AppData\Local\Temp\s9sg.o
+___sp 0 0 STACK 2 stack C:\Users\flyhi\AppData\Local\Temp\sqto.o
 _main 6 0 CODE 0 maintext dist/default/production\Main.X.production.o
 btemp 1C 0 ABS 0 - dist/default/production\Main.X.production.o
-start 0 0 ENTRY 0 init C:\Users\flyhi\AppData\Local\Temp\s9sg.o
+start 0 0 ENTRY 0 init C:\Users\flyhi\AppData\Local\Temp\sqto.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Main.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
 ttemp0 1C 0 ABS 0 - dist/default/production\Main.X.production.o
@@ -103,7 +103,7 @@ __CFG_IOSCFS$8MHZ 0 0 ABS 0 - dist/default/production\Main.X.production.o
 start_initialization 2 0 ENTRY 0 cinit dist/default/production\Main.X.production.o
 _OPTION 0 0 ABS 0 - dist/default/production\Main.X.production.o
 __pcstackBANK0 10 0 BANK0 1 cstackBANK0 dist/default/production\Main.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\flyhi\AppData\Local\Temp\s9sg.o
+___int_sp 0 0 STACK 2 stack C:\Users\flyhi\AppData\Local\Temp\sqto.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hcinit 6 0 ENTRY 0 cinit -
 __Hidloc 0 0 IDLOC 0 idloc -
@@ -129,14 +129,14 @@ __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __S0 1000 0 ABS 0 - -
 __S1 17 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
-reset_vec 1FE 0 CODE 0 reset_vec C:\Users\flyhi\AppData\Local\Temp\s9sg.o
+reset_vec 1FE 0 CODE 0 reset_vec C:\Users\flyhi\AppData\Local\Temp\sqto.o
 __pmaintext 6 0 CODE 0 maintext dist/default/production\Main.X.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 1FFE 0 CONFIG 0 config -
 __CFG_CP$OFF 0 0 ABS 0 - dist/default/production\Main.X.production.o
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\Main.X.production.o
-stackhi 0 0 ABS 0 - C:\Users\flyhi\AppData\Local\Temp\s9sg.o
-stacklo 0 0 ABS 0 - C:\Users\flyhi\AppData\Local\Temp\s9sg.o
+stackhi 0 0 ABS 0 - C:\Users\flyhi\AppData\Local\Temp\sqto.o
+stacklo 0 0 ABS 0 - C:\Users\flyhi\AppData\Local\Temp\sqto.o
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -

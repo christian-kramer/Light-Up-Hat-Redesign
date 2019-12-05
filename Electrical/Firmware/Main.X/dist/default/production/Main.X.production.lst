@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V2.00 build -1524193055 
-                                                                                               Sat Nov 16 13:19:21 2019
+                                                                                               Sun Nov 17 18:54:20 2019
 
 Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 20180527130849
      1  0000                     
@@ -168,11 +168,11 @@ Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 201805271
    107                           _GPIO	set	0x6
    108  0006                     	global	_TRISGPIO
    109                           _TRISGPIO	set	0x6
-   110  0006                     	global	_OPTION
-   111                           _OPTION	set	0x0
-   112  0000                     	global	_OSCCALbits
-   113                           _OSCCALbits	set	0x5
-   114  0005                     ; #config settings
+   110  0006                     	global	_OSCCALbits
+   111                           _OSCCALbits	set	0x5
+   112  0005                     	global	_OPTION
+   113                           _OPTION	set	0x0
+   114  0000                     ; #config settings
    115                           global __CFG_IOSCFS$8MHZ
    116                           __CFG_IOSCFS$8MHZ equ 0x0
    117  0000                     global __CFG_MCPU$ON
@@ -183,7 +183,7 @@ Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 201805271
    122                           __CFG_CP$OFF equ 0x0
    123  0000                     global __CFG_MCLRE$ON
    124                           __CFG_MCLRE$ON equ 0x0
-   125  0000                     	file	"C:\Users\flyhi\AppData\Local\Temp\s9sg."
+   125  0000                     	file	"C:\Users\flyhi\AppData\Local\Temp\sqto."
    126                           	line	#
    127                           psect cinit,class=ENTRY,delta=2
    128                           global start_initialization
@@ -323,35 +323,35 @@ Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 201805271
    262                           	line	28
    263                           	
    264                           l523:	
-   265  003                     ;main.c: 28:     OSCCALbits.FOSC4 = 0;
-   266                           	bcf	(5),0	;volatile
-   267  003  405                	line	29
-   268                           	
-   269                           l525:	
-   270  004                     ;main.c: 29:     OPTION = 0b01000000;
-   271                           	movlw	low(040h)
-   272  004  C40                	option
-   273  005  002                	line	30
+   265  003                     ;main.c: 28:     OPTION = 0b00000000;
+   266                           	movlw	0
+   267  003  C00                	option
+   268  004  002                	line	29
+   269                           	
+   270                           l525:	
+   271  005                     ;main.c: 29:     OSCCALbits.FOSC4 = 0;
+   272                           	bcf	(5),0	;volatile
+   273  005  405                	line	30
    274                           	
    275                           l527:	
-   276  006                     ;main.c: 30:     TRISGPIO = 0b00000000;
-   277                           	movlw	0
-   278  006  C00                	tris	0x6
+   276  006                     ;main.c: 30:     TRISGPIO = 0b00000010;
+   277                           	movlw	low(02h)
+   278  006  C02                	tris	0x6
    279  007  006                	goto	l529
    280  008  A09                	line	32
    281                           ;main.c: 32:     while (1) {
    282                           	
    283                           l15:	
-   284  009                     	line	33
+   284  009                     	line	38
    285                           	
    286                           l529:	
-   287  009                     ;main.c: 33:         GPIO = 0b00000100;
+   287  009                     ;main.c: 38:         GPIO = 0b00000100;
    288                           	movlw	low(04h)
    289  009  C04                	movwf	(6)	;volatile
-   290  00A  026                	line	34
+   290  00A  026                	line	39
    291                           	
    292                           l531:	
-   293  00B                     ;main.c: 34:         _delay((unsigned long)((1000)*(8000000/4000.0)));
+   293  00B                     ;main.c: 39:         _delay((unsigned long)((1000)*(8000000/4000.0)));
    294                           	opt asmopt_push
    295                           opt asmopt_off
    296                           movlw  11
@@ -370,15 +370,15 @@ Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 201805271
    309  016  A11                	nop2
    310  017  A18                opt asmopt_pop
    311                           
-   312                           	line	35
+   312                           	line	40
    313                           	
    314                           l533:	
-   315  018                     ;main.c: 35:         GPIO = 0b00000000;
+   315  018                     ;main.c: 40:         GPIO = 0b00000000;
    316                           	clrf	(6)	;volatile
-   317  018  066                	line	36
+   317  018  066                	line	41
    318                           	
    319                           l535:	
-   320  019                     ;main.c: 36:         _delay((unsigned long)((1000)*(8000000/4000.0)));
+   320  019                     ;main.c: 41:         _delay((unsigned long)((1000)*(8000000/4000.0)));
    321                           	opt asmopt_push
    322                           opt asmopt_off
    323                           movlw  11
@@ -398,15 +398,15 @@ Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 201805271
    337  025  A26                opt asmopt_pop
    338                           
    339                           	goto	l529
-   340  026  A09                	line	37
-   341                           ;main.c: 37:     }
+   340  026  A09                	line	43
+   341                           ;main.c: 43:     }
    342                           	
    343                           l16:	
    344  027                     	goto	l529
    345  027  A09                	
    346                           l17:	
-   347  028                     	line	39
-   348                           ;main.c: 38:     return (0);;	Return value of _main is never used
+   347  028                     	line	45
+   348                           ;main.c: 44:     return (0);;	Return value of _main is never used
    349                           	
    350                           l18:	
    351  028                     	global	start
@@ -488,12 +488,12 @@ BITBANK0             E      0       0       6        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.00 build -1524193055 
-Symbol Table                                                                                   Sat Nov 16 13:19:21 2019
+Symbol Table                                                                                   Sun Nov 17 18:54:20 2019
 
             __CFG_CP$OFF 0000                       l15 0009                       l16 0027  
                      l17 0028                       l18 0028                       u17 0011  
                      u27 001F                       fsr 0004                      l531 000B  
-                    l523 0003                      l533 0018                      l525 0004  
+                    l523 0003                      l533 0018                      l525 0005  
                     l535 0019                      l527 0006                      l529 0009  
            __CFG_MCPU$ON 0000                     _GPIO 0006                     _main 0003  
                    btemp 001C                     start 0000            __CFG_MCLRE$ON 0000  

@@ -1,0 +1,831 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V2.00 build -1524193055 
+                                                                                               Thu Dec 05 13:24:13 2019
+
+Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 20180527130849
+     1  0000                     
+      + 0000                     
+     2                           ; Version 2.00
+     3                           ; Generated 27/05/2018 GMT
+     4                           
+     5                           ; 
+     6                           ; Copyright © 2018, Microchip Technology Inc. and its subsidiaries ("Microchip")
+     7                           ; All rights reserved.
+     8                           ; 
+     9                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+                                 ip").
+    10                           ; 
+    11                           ; Redistribution and use in source and binary forms, with or without modification, are
+    12                           ; permitted provided that the following conditions are met:
+    13                           ; 
+    14                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+                                 t of
+    15                           ;        conditions and the following disclaimer.
+    16                           ; 
+    17                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+                                 list
+    18                           ;        of conditions and the following disclaimer in the documentation and/or other
+    19                           ;        materials provided with the distribution.
+    20                           ; 
+    21                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+                                 is
+    22                           ;        software without specific prior written permission.
+    23                           ; 
+    24                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+
+    25                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+                                 OR
+    26                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+                                 T,
+    27                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+                                 
+    28                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+                                 
+    29                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+                                 RICT
+    30                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+                                 SE OF
+    31                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    32                           ; 
+    33                           
+    34                           
+    35                           ; 
+    36                           ; Code-generator required, PIC10F200 Definitions
+    37                           ; 
+    38  0004                     fsr0 equ 04h
+    39  0004                     indf equ 00h
+    40  0000                     indf0 equ 00h
+    41  0000                     pc equ 02h
+    42  0002                     pcl equ 02h
+    43  0002                     status equ 03h
+    44  0003                     
+     2                           opt pagewidth 120
+     3  0000                     byte0	macro	val
+     4                           	(getbyte(val,0))
+     5                           endm
+     6  0000                     byte1	macro	val
+     7                           	(getbyte(val,1))
+     8                           endm
+     9  0000                     byte2	macro	val
+    10                           	(getbyte(val,2))
+    11                           endm
+    12  0000                     byte3	macro	val
+    13                           	(getbyte(val,3))
+    14                           endm
+    15  0000                     byte4	macro	val
+    16                           	(getbyte(val,4))
+    17                           endm
+    18  0000                     byte5	macro	val
+    19                           	(getbyte(val,5))
+    20                           endm
+    21  0000                     byte6	macro	val
+    22                           	(getbyte(val,6))
+    23                           endm
+    24  0000                     byte7	macro	val
+    25                           	(getbyte(val,7))
+    26                           endm
+    27  0000                     getword	macro	val,pos
+    28                           	(((val) >> (8 * pos)) and 0xffff)
+    29                           endm
+    30  0000                     word0	macro	val
+    31                           	(getword(val,0))
+    32                           endm
+    33  0000                     word1	macro	val
+    34                           	(getword(val,2))
+    35                           endm
+    36  0000                     word2	macro	val
+    37                           	(getword(val,4))
+    38                           endm
+    39  0000                     word3	macro	val
+    40                           	(getword(val,6))
+    41                           endm
+    42  0000                     gettword	macro	val,pos
+    43                           	(((val) >> (8 * pos)) and 0xffffff)
+    44                           endm
+    45  0000                     tword0	macro	val
+    46                           	(gettword(val,0))
+    47                           endm
+    48  0000                     tword1	macro	val
+    49                           	(gettword(val,3))
+    50                           endm
+    51  0000                     tword2	macro	val
+    52                           	(gettword(val,6))
+    53                           endm
+    54  0000                     getdword	macro	val,pos
+    55                           	(((val) >> (8 * pos)) and 0xffffffff)
+    56                           endm
+    57  0000                     dword0	macro	val
+    58                           	(getdword(val,0))
+    59                           endm
+    60  0000                     dword1	macro	val
+    61                           	(getdword(val,4))
+    62                           endm
+    63  0000                     clrc	macro
+    64                           	bcf	3,0
+    65                           	endm
+    66  0000                     clrz	macro
+    67                           	bcf	3,2
+    68                           	endm
+    69  0000                     setc	macro
+    70                           	bsf	3,0
+    71                           	endm
+    72  0000                     setz	macro
+    73                           	bsf	3,2
+    74                           	endm
+    75  0000                     skipc	macro
+    76                           	btfss	3,0
+    77                           	endm
+    78  0000                     skipz	macro
+    79                           	btfss	3,2
+    80                           	endm
+    81  0000                     skipnc	macro
+    82                           	btfsc	3,0
+    83                           	endm
+    84  0000                     skipnz	macro
+    85                           	btfsc	3,2
+    86                           	endm
+    87  0000                     # 54 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic10f200.h"
+    88                           INDF equ 00h ;# 
+    89  0000                     # 74 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic10f200.h"
+    90                           TMR0 equ 01h ;# 
+    91  0001                     # 94 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic10f200.h"
+    92                           PCL equ 02h ;# 
+    93  0002                     # 114 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic10f200.h"
+    94                           STATUS equ 03h ;# 
+    95  0003                     # 180 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic10f200.h"
+    96                           FSR equ 04h ;# 
+    97  0004                     # 200 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic10f200.h"
+    98                           OSCCAL equ 05h ;# 
+    99  0005                     # 271 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic10f200.h"
+   100                           GPIO equ 06h ;# 
+   101  0006                     	FNROOT	_main
+   102                           	global	_GPIO
+   103                           _GPIO	set	0x6
+   104  0006                     	global	_TRISGPIO
+   105                           _TRISGPIO	set	0x6
+   106  0006                     	global	_OPTION
+   107                           _OPTION	set	0x0
+   108  0000                     	global	_OSCCALbits
+   109                           _OSCCALbits	set	0x5
+   110  0005                     ; #config settings
+   111                           global __CFG_WDTE$OFF
+   112                           __CFG_WDTE$OFF equ 0x0
+   113  0000                     global __CFG_CP$OFF
+   114                           __CFG_CP$OFF equ 0x0
+   115  0000                     global __CFG_MCLRE$ON
+   116                           __CFG_MCLRE$ON equ 0x0
+   117  0000                     	file	"C:\Users\flyhi\AppData\Local\Temp\s9q8."
+   118                           	line	#
+   119                           psect cinit,class=ENTRY,delta=2
+   120                           global start_initialization
+   121                           start_initialization:
+   122  001                     
+   123                           global __initialization
+   124                           __initialization:
+   125  001                     psect cinit,class=ENTRY,delta=2,merge=1
+   126                           global end_of_initialization,__end_of__initialization
+   127                           
+   128                           ;End of C runtime variable initialization code
+   129                           
+   130                           end_of_initialization:
+   131  001                     __end_of__initialization:
+   132  001                     clrf fsr
+   133  001  064                ljmp _main	;jump to C main() function
+   134  002  A03                psect	cstackBANK0,class=BANK0,space=1,noexec
+   135                           global __pcstackBANK0
+   136                           __pcstackBANK0:
+   137  010                     ?_main:	; 2 bytes @ 0x0
+   138  010                     main@argc:	; 2 bytes @ 0x0
+   139  010                     	ds	2
+   140  010                     main@argv:	; 2 bytes @ 0x2
+   141  012                     	ds	2
+   142  012                     ??_main:	; 1 bytes @ 0x4
+   143  014                     	ds	2
+   144  014                     	global	main@flashcounter
+   145                           main@flashcounter:	; 1 bytes @ 0x6
+   146  016                     	ds	1
+   147  016                     	global	main@lengthcount
+   148                           main@lengthcount:	; 2 bytes @ 0x7
+   149  017                     	ds	2
+   150  017                     	global	main@ledstate
+   151                           main@ledstate:	; 1 bytes @ 0x9
+   152  019                     	ds	1
+   153  019                     ;!
+   154                           ;!Data Sizes:
+   155                           ;!    Strings     0
+   156                           ;!    Constant    0
+   157                           ;!    Data        0
+   158                           ;!    BSS         0
+   159                           ;!    Persistent  0
+   160                           ;!    Stack       0
+   161                           ;!
+   162                           ;!Auto Spaces:
+   163                           ;!    Space          Size  Autos    Used
+   164                           ;!    COMMON            0      0       0
+   165                           ;!    BANK0            14     10      10
+   166                           
+   167                           ;!
+   168                           ;!Pointer List with Targets:
+   169                           ;!
+   170                           ;!    None.
+   171                           
+   172                           
+   173                           ;!
+   174                           ;!Critical Paths under _main in COMMON
+   175                           ;!
+   176                           ;!    None.
+   177                           ;!
+   178                           ;!Critical Paths under _main in BANK0
+   179                           ;!
+   180                           ;!    None.
+   181                           
+   182 ;;
+   183 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
+   184 ;;
+   185                           
+   186                           ;!
+   187                           ;!Call Graph Tables:
+   188                           ;!
+   189                           ;! ---------------------------------------------------------------------------------
+   190                           ;! (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   191                           ;! ---------------------------------------------------------------------------------
+   192                           ;! (0) _main                                                10     6      4     142
+   193                           ;!                                              0 BANK0     10     6      4
+   194                           ;! ---------------------------------------------------------------------------------
+   195                           ;! Estimated maximum stack depth 0
+   196                           ;! ---------------------------------------------------------------------------------
+   197                           ;!
+   198                           ;! Call Graph Graphs:
+   199                           ;!
+   200                           ;! _main (ROOT)
+   201                           ;!
+   202                           
+   203                           ;! Address spaces:
+   204                           
+   205                           ;!Name               Size   Autos  Total    Cost      Usage
+   206                           ;!BITCOMMON            0      0       0       0        0.0%
+   207                           ;!NULL                 0      0       0       0        0.0%
+   208                           ;!CODE                 0      0       0       0        0.0%
+   209                           ;!BITSFR0              0      0       0       1        0.0%
+   210                           ;!SFR0                 0      0       0       1        0.0%
+   211                           ;!COMMON               0      0       0       1        0.0%
+   212                           ;!STACK                0      0       0       2        0.0%
+   213                           ;!BANK0                E      A       A       3       71.4%
+   214                           ;!ABS                  0      0       0       4        0.0%
+   215                           ;!DATA                 0      0       0       5        0.0%
+   216                           ;!BITBANK0             E      0       0       6        0.0%
+   217                           
+   218                           	global	_main
+   219                           
+   220 ;; *************** function _main *****************
+   221 ;; Defined at:
+   222 ;;		line 26 in file "main.c"
+   223 ;; Parameters:    Size  Location     Type
+   224 ;;  argc            2    0[BANK0 ] int 
+   225 ;;  argv            2    2[BANK0 ] PTR PTR unsigned char 
+   226 ;; Auto vars:     Size  Location     Type
+   227 ;;  lengthcount     2    7[BANK0 ] unsigned int 
+   228 ;;  ledstate        1    9[BANK0 ] unsigned char 
+   229 ;;  flashcounter    1    6[BANK0 ] unsigned char 
+   230 ;; Return value:  Size  Location     Type
+   231 ;;                  2    0[BANK0 ] int 
+   232 ;; Registers used:
+   233 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+0, btemp+1, btemp+2, btemp+3
+   234 ;; Tracked objects:
+   235 ;;		On entry : B00/0
+   236 ;;		On exit  : 0/0
+   237 ;;		Unchanged: 0/0
+   238 ;; Data sizes:     COMMON   BANK0
+   239 ;;      Params:         0       4
+   240 ;;      Locals:         0       4
+   241 ;;      Temps:          0       2
+   242 ;;      Totals:         0      10
+   243 ;;Total ram usage:       10 bytes
+   244 ;; This function calls:
+   245 ;;		Nothing
+   246 ;; This function is called by:
+   247 ;;		Startup code after reset
+   248 ;; This function uses a non-reentrant model
+   249 ;;
+   250                           psect	maintext,global,class=CODE,delta=2,split=1,group=0
+   251                           	file	"main.c"
+   252                           	line	26
+   253                           global __pmaintext
+   254                           __pmaintext:	;psect for function _main
+   255  003                     psect	maintext
+   256                           	file	"main.c"
+   257                           	line	26
+   258                           	global	__size_of_main
+   259                           	__size_of_main	equ	__end_of_main-_main
+   260  00C0                     	
+   261                           _main:	
+   262  003                     ;incstack = 0
+   263                           	opt	stack 2
+   264                           ; Regs used in _main: [wreg-fsr0h+status,2-btemp+3]
+   265                           	line	27
+   266                           	
+   267                           l571:	
+   268  003                     ;main.c: 27:     OSCCALbits.FOSC4 = 0;
+   269                           	bcf	(5),0	;volatile
+   270  003  405                	line	28
+   271                           	
+   272                           l573:	
+   273  004                     ;main.c: 28:     OPTION = 0b10000000;
+   274                           	movlw	low(080h)
+   275  004  C80                	option
+   276  005  002                	line	29
+   277                           	
+   278                           l575:	
+   279  006                     ;main.c: 29:     TRISGPIO = 0b00000010;
+   280                           	movlw	low(02h)
+   281  006  C02                	tris	0x6
+   282  007  006                	line	31
+   283                           	
+   284                           l577:	
+   285  008                     ;main.c: 31:     uint8_t ledstate = 0;
+   286                           	clrf	(main@ledstate)
+   287  008  079                	line	33
+   288                           	
+   289                           l579:	
+   290  009                     ;main.c: 33:     uint8_t flashcounter = 0;
+   291                           	clrf	(main@flashcounter)
+   292  009  076                	goto	l581
+   293  00A  A0B                	line	36
+   294                           ;main.c: 36:     while(1) {
+   295                           	
+   296                           l15:	
+   297  00B                     	line	38
+   298                           	
+   299                           l581:	
+   300  00B                     ;main.c: 38:         if (!((GPIO >> 1) & 1U)) {
+   301                           	movf	(6),w	;volatile
+   302  00B  206                	movwf	btemp+3
+   303  00C  03F                	movlw	01h
+   304  00D  C01                	movwf	(??_main+0)+0
+   305  00E  034                u175:
+   306  00F                     	clrc
+   307  00F  403                	rrf	btemp+3,f
+   308  010  33F                	decfsz	(??_main+0)+0,f
+   309  011  2F4                	goto	u175
+   310  012  A0F                	btfsc	0+btemp+3,(0)&7
+   311  013  61F                	goto	u181
+   312  014  A16                	goto	u180
+   313  015  A17                u181:
+   314  016                     	goto	l607
+   315  016  A83                u180:
+   316  017                     	line	40
+   317                           	
+   318                           l583:	
+   319  017                     ;main.c: 40:             _delay((unsigned long)((50)*(4000000/4000.0)));
+   320                           	opt asmopt_push
+   321                           opt asmopt_off
+   322                           movlw	65
+   323  017  C41                movwf	((??_main+0)+0+1),f
+   324  018  035                	movlw	238
+   325  019  CEE                movwf	((??_main+0)+0),f
+   326  01A  034                	u337:
+   327  01B                     decfsz	((??_main+0)+0),f
+   328  01B  2F4                	goto	u337
+   329  01C  A1B                	decfsz	((??_main+0)+0+1),f
+   330  01D  2F5                	goto	u337
+   331  01E  A1B                	nop
+   332  01F  000                opt asmopt_pop
+   333                           
+   334                           	line	41
+   335                           	
+   336                           l585:	
+   337  020                     ;main.c: 41:             if (!((GPIO >> 1) & 1U)) {
+   338                           	movf	(6),w	;volatile
+   339  020  206                	movwf	btemp+3
+   340  021  03F                	movlw	01h
+   341  022  C01                	movwf	(??_main+0)+0
+   342  023  034                u195:
+   343  024                     	clrc
+   344  024  403                	rrf	btemp+3,f
+   345  025  33F                	decfsz	(??_main+0)+0,f
+   346  026  2F4                	goto	u195
+   347  027  A24                	btfsc	0+btemp+3,(0)&7
+   348  028  61F                	goto	u201
+   349  029  A2B                	goto	u200
+   350  02A  A2C                u201:
+   351  02B                     	goto	l607
+   352  02B  A83                u200:
+   353  02C                     	line	43
+   354                           	
+   355                           l587:	
+   356  02C                     ;main.c: 43:                 uint16_t lengthcount = 0;
+   357                           	clrf	(main@lengthcount)
+   358  02C  077                	clrf	(main@lengthcount+1)
+   359  02D  078                	line	45
+   360                           ;main.c: 45:                 while((!((GPIO >> 1) & 1U)) && lengthcount < 2000){
+   361                           	goto	l593
+   362  02E  A40                	
+   363                           l19:	
+   364  02F                     	line	47
+   365                           	
+   366                           l589:	
+   367  02F                     ;main.c: 47:                     lengthcount++;
+   368                           	movlw	01h
+   369  02F  C01                	movwf	btemp+0
+   370  030  03C                	clrf	btemp+1
+   371  031  07D                	movf	0+wtemp0,w
+   372  032  21C                	addwf	(main@lengthcount),f
+   373  033  1F7                	skipnc
+   374  034  603                	incf	(main@lengthcount+1),f
+   375  035  2B8                	movf	1+wtemp0,w
+   376  036  21D                	addwf	(main@lengthcount+1),f
+   377  037  1F8                	line	48
+   378                           	
+   379                           l591:	
+   380  038                     ;main.c: 48:                     _delay((unsigned long)((1)*(4000000/4000.0)));
+   381                           	opt asmopt_push
+   382                           opt asmopt_off
+   383                           	movlw	199
+   384  038  CC7                movwf	((??_main+0)+0),f
+   385  039  034                	u347:
+   386  03A                     	nop2
+   387  03A  A3B                decfsz	(??_main+0)+0,f
+   388  03B  2F4                	goto	u347
+   389  03C  A3A                	nop2
+   390  03D  A3E                	nop2
+   391  03E  A3F                opt asmopt_pop
+   392                           
+   393                           	goto	l593
+   394  03F  A40                	line	49
+   395                           ;main.c: 49:                 };
+   396                           	
+   397                           l18:	
+   398  040                     	line	45
+   399                           	
+   400                           l593:	
+   401  040                     ;main.c: 45:                 while((!((GPIO >> 1) & 1U)) && lengthcount < 2000){
+   402                           	movf	(6),w	;volatile
+   403  040  206                	movwf	btemp+3
+   404  041  03F                	movlw	01h
+   405  042  C01                	movwf	(??_main+0)+0
+   406  043  034                u215:
+   407  044                     	clrc
+   408  044  403                	rrf	btemp+3,f
+   409  045  33F                	decfsz	(??_main+0)+0,f
+   410  046  2F4                	goto	u215
+   411  047  A44                	btfsc	0+btemp+3,(0)&7
+   412  048  61F                	goto	u221
+   413  049  A4B                	goto	u220
+   414  04A  A4C                u221:
+   415  04B                     	goto	l597
+   416  04B  A57                u220:
+   417  04C                     	
+   418                           l595:	
+   419  04C                     	movlw	07h
+   420  04C  C07                	subwf	(main@lengthcount+1),w
+   421  04D  098                	movlw	0D0h
+   422  04E  CD0                	skipnz
+   423  04F  643                	subwf	(main@lengthcount),w
+   424  050  097                	skipc
+   425  051  703                	goto	u231
+   426  052  A54                	goto	u230
+   427  053  A55                u231:
+   428  054                     	goto	l589
+   429  054  A2F                u230:
+   430  055                     	goto	l597
+   431  055  A57                	
+   432                           l21:	
+   433  056                     	goto	l597
+   434  056  A57                	
+   435                           l22:	
+   436  057                     	line	51
+   437                           	
+   438                           l597:	
+   439  057                     ;main.c: 51:                 if (lengthcount < 500) {
+   440                           	movlw	01h
+   441  057  C01                	subwf	(main@lengthcount+1),w
+   442  058  098                	movlw	0F4h
+   443  059  CF4                	skipnz
+   444  05A  643                	subwf	(main@lengthcount),w
+   445  05B  097                	skipnc
+   446  05C  603                	goto	u241
+   447  05D  A5F                	goto	u240
+   448  05E  A60                u241:
+   449  05F                     	goto	l605
+   450  05F  A7F                u240:
+   451  060                     	line	55
+   452                           	
+   453                           l599:	
+   454  060                     ;main.c: 55:                     if ((ledstate >> 3) & 1U) {
+   455                           	movf	(main@ledstate),w
+   456  060  219                	movwf	btemp+3
+   457  061  03F                	movlw	03h
+   458  062  C03                	movwf	(??_main+0)+0
+   459  063  034                u255:
+   460  064                     	clrc
+   461  064  403                	rrf	btemp+3,f
+   462  065  33F                	decfsz	(??_main+0)+0,f
+   463  066  2F4                	goto	u255
+   464  067  A64                	btfss	0+btemp+3,(0)&7
+   465  068  71F                	goto	u261
+   466  069  A6B                	goto	u260
+   467  06A  A6C                u261:
+   468  06B                     	goto	l603
+   469  06B  A75                u260:
+   470  06C                     	line	57
+   471                           	
+   472                           l601:	
+   473  06C                     ;main.c: 57:                         ledstate &= ~(1UL << 3);
+   474                           	movlw	low(0F7h)
+   475  06C  CF7                	movwf	btemp+3
+   476  06D  03F                	movf	btemp+3,w
+   477  06E  21F                	andwf	(main@ledstate),f
+   478  06F  179                	line	58
+   479                           ;main.c: 58:                         ledstate &= ~(1UL << 2);
+   480                           	movlw	low(0FBh)
+   481  070  CFB                	movwf	btemp+3
+   482  071  03F                	movf	btemp+3,w
+   483  072  21F                	andwf	(main@ledstate),f
+   484  073  179                	line	59
+   485                           ;main.c: 59:                     } else {
+   486                           	goto	l607
+   487  074  A83                	
+   488                           l24:	
+   489  075                     	line	61
+   490                           	
+   491                           l603:	
+   492  075                     ;main.c: 61:                         ledstate ^= 1UL << 2;
+   493                           	movlw	low(04h)
+   494  075  C04                	movwf	btemp+3
+   495  076  03F                	movf	btemp+3,w
+   496  077  21F                	xorwf	(main@ledstate),f
+   497  078  1B9                	line	64
+   498                           ;main.c: 64:                         ledstate &= ~(1UL << 3);
+   499                           	movlw	low(0F7h)
+   500  079  CF7                	movwf	btemp+3
+   501  07A  03F                	movf	btemp+3,w
+   502  07B  21F                	andwf	(main@ledstate),f
+   503  07C  179                	goto	l607
+   504  07D  A83                	line	65
+   505                           ;main.c: 65:                     }
+   506                           	
+   507                           l25:	
+   508  07E                     	line	66
+   509                           ;main.c: 66:                 } else {
+   510                           	goto	l607
+   511  07E  A83                	
+   512                           l23:	
+   513  07F                     	line	70
+   514                           	
+   515                           l605:	
+   516  07F                     ;main.c: 70:                     ledstate |= 1UL << 3;
+   517                           	bsf	(main@ledstate)+(3/8),(3)&7
+   518  07F  579                	goto	l607
+   519  080  A83                	line	71
+   520                           ;main.c: 71:                 }
+   521                           	
+   522                           l26:	
+   523  081                     	goto	l607
+   524  081  A83                	line	72
+   525                           ;main.c: 72:             }
+   526                           	
+   527                           l17:	
+   528  082                     	goto	l607
+   529  082  A83                	line	73
+   530                           ;main.c: 73:         }
+   531                           	
+   532                           l16:	
+   533  083                     	line	75
+   534                           	
+   535                           l607:	
+   536  083                     ;main.c: 75:         if ((ledstate >> 3) & 1U) {
+   537                           	movf	(main@ledstate),w
+   538  083  219                	movwf	btemp+3
+   539  084  03F                	movlw	03h
+   540  085  C03                	movwf	(??_main+0)+0
+   541  086  034                u275:
+   542  087                     	clrc
+   543  087  403                	rrf	btemp+3,f
+   544  088  33F                	decfsz	(??_main+0)+0,f
+   545  089  2F4                	goto	u275
+   546  08A  A87                	btfss	0+btemp+3,(0)&7
+   547  08B  71F                	goto	u281
+   548  08C  A8E                	goto	u280
+   549  08D  A8F                u281:
+   550  08E                     	goto	l617
+   551  08E  AA7                u280:
+   552  08F                     	line	77
+   553                           	
+   554                           l609:	
+   555  08F                     ;main.c: 77:             if (++flashcounter > 100) {
+   556                           	movlw	low(01h)
+   557  08F  C01                	movwf	btemp+3
+   558  090  03F                	movf	btemp+3,w
+   559  091  21F                	addwf	(main@flashcounter),f
+   560  092  1F6                	movlw	low(065h)
+   561  093  C65                	subwf	((main@flashcounter)),w
+   562  094  096                	skipc
+   563  095  703                	goto	u291
+   564  096  A98                	goto	u290
+   565  097  A99                u291:
+   566  098                     	goto	l615
+   567  098  A9F                u290:
+   568  099                     	line	78
+   569                           	
+   570                           l611:	
+   571  099                     ;main.c: 78:                 flashcounter = 0;
+   572                           	clrf	(main@flashcounter)
+   573  099  076                	line	79
+   574                           	
+   575                           l613:	
+   576  09A                     ;main.c: 79:                 GPIO ^= 1UL << 2;
+   577                           	movlw	low(04h)
+   578  09A  C04                	movwf	btemp+3
+   579  09B  03F                	movf	btemp+3,w
+   580  09C  21F                	xorwf	(6),f	;volatile
+   581  09D  1A6                	goto	l615
+   582  09E  A9F                	line	80
+   583                           ;main.c: 80:             }
+   584                           	
+   585                           l28:	
+   586  09F                     	line	81
+   587                           	
+   588                           l615:	
+   589  09F                     ;main.c: 81:             _delay((unsigned long)((1)*(4000000/4000.0)));
+   590                           	opt asmopt_push
+   591                           opt asmopt_off
+   592                           	movlw	199
+   593  09F  CC7                movwf	((??_main+0)+0),f
+   594  0A0  034                	u357:
+   595  0A1                     	nop2
+   596  0A1  AA2                decfsz	(??_main+0)+0,f
+   597  0A2  2F4                	goto	u357
+   598  0A3  AA1                	nop2
+   599  0A4  AA5                	nop2
+   600  0A5  AA6                opt asmopt_pop
+   601                           
+   602                           	line	82
+   603                           ;main.c: 82:         } else {
+   604                           	goto	l581
+   605  0A6  A0B                	
+   606                           l27:	
+   607  0A7                     	line	84
+   608                           	
+   609                           l617:	
+   610  0A7                     ;main.c: 84:             GPIO ^= (-(!((ledstate >> 2) & 1U)) ^ GPIO) & (1UL << 2);
+   611                           	movf	(6),w	;volatile
+   612  0A7  206                	movwf	btemp+3
+   613  0A8  03F                	movf	(main@ledstate),w
+   614  0A9  219                	movwf	btemp+2
+   615  0AA  03E                	movlw	02h
+   616  0AB  C02                	movwf	(??_main+0)+0
+   617  0AC  034                u305:
+   618  0AD                     	clrc
+   619  0AD  403                	rrf	btemp+2,f
+   620  0AE  33E                	decfsz	(??_main+0)+0,f
+   621  0AF  2F4                	goto	u305
+   622  0B0  AAD                	btfss	0+btemp+2,(0)&7
+   623  0B1  71E                	goto	u311
+   624  0B2  AB4                	goto	u310
+   625  0B3  AB6                u311:
+   626  0B4                     	movlw	1
+   627  0B4  C01                	goto	u320
+   628  0B5  AB7                u310:
+   629  0B6                     	movlw	0
+   630  0B6  C00                u320:
+   631  0B7                     	xorlw	0ffh
+   632  0B7  FFF                	movwf	(??_main+1)+0
+   633  0B8  035                	incf	(??_main+1)+0,w
+   634  0B9  295                	xorwf	btemp+3,w
+   635  0BA  19F                	andlw	04h
+   636  0BB  E04                	movwf	btemp+3
+   637  0BC  03F                	movf	btemp+3,w
+   638  0BD  21F                	xorwf	(6),f	;volatile
+   639  0BE  1A6                	goto	l581
+   640  0BF  A0B                	line	85
+   641                           ;main.c: 85:         }
+   642                           	
+   643                           l29:	
+   644  0C0                     	goto	l581
+   645  0C0  A0B                	line	86
+   646                           ;main.c: 86:     }
+   647                           	
+   648                           l30:	
+   649  0C1                     	goto	l581
+   650  0C1  A0B                	
+   651                           l31:	
+   652  0C2                     	line	89
+   653                           ;main.c: 88:     return (0);;	Return value of _main is never used
+   654                           	
+   655                           l32:	
+   656  0C2                     	global	start
+   657                           	ljmp	start
+   658  0C2  A00                	opt stack 0
+   659                           GLOBAL	__end_of_main
+   660                           	__end_of_main:
+   661  0C3                     	signat	_main,8314
+   662                           global	___latbits
+   663                           ___latbits	equ	0
+   664  0000                     	global	btemp
+   665                           	btemp set 01Ch
+   666  001C                     
+   667                           	DABS	1,28,4	;btemp
+   668                           	global	wtemp0
+   669                           	wtemp0 set btemp+0
+   670  001C                     	global	wtemp1
+   671                           	wtemp1 set btemp+2
+   672  001E                     	global	ttemp0
+   673                           	ttemp0 set btemp+0
+   674  001C                     	global	ltemp0
+   675                           	ltemp0 set btemp+0
+   676  001C                     	end
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            14     10      10
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                10     6      4     142
+                                              0 BANK0     10     6      4
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            0      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               0      0       0       1        0.0%
+STACK                0      0       0       2        0.0%
+BANK0                E      A       A       3       71.4%
+ABS                  0      0       0       4        0.0%
+DATA                 0      0       0       5        0.0%
+BITBANK0             E      0       0       6        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.00 build -1524193055 
+Symbol Table                                                                                   Thu Dec 05 13:24:13 2019
+
+            __CFG_CP$OFF 0000                       l21 0056                       l30 00C1  
+                     l22 0057                       l31 00C2                       l23 007F  
+                     l15 000B                       l32 00C2                       l16 0083  
+                     l24 0075                       l17 0082                       l25 007E  
+                     l26 0081                       l18 0040                       l27 00A7  
+                     l19 002F                       l28 009F                       l29 00C0  
+                     fsr 0004                      l601 006C                      l611 0099  
+                    l603 0075                      l613 009A                      l605 007F  
+                    l615 009F                      l607 0083                      l609 008F  
+                    l617 00A7                      l571 0003                      l581 000B  
+                    l573 0004                      l591 0038                      l583 0017  
+                    l575 0006                      l593 0040                      l585 0020  
+                    l577 0008                      l595 004C                      l587 002C  
+                    l579 0009                      l597 0057                      l589 002F  
+                    l599 0060                      u200 002C                      u201 002B  
+                    u220 004C                      u221 004B                      u310 00B6  
+                    u230 0055                      u311 00B4                      u231 0054  
+                    u215 0044                      u320 00B7                      u240 0060  
+                    u305 00AD                      u241 005F                      u260 006C  
+                    u180 0017                      u261 006B                      u181 0016  
+                    u255 0064                      u175 000F                      u280 008F  
+                    u281 008E                      u337 001B                      u290 0099  
+                    u291 0098                      u275 0087                      u347 003A  
+                    u195 0024                      u357 00A1                     _GPIO 0006  
+                   _main 0003                     btemp 001C                     start 0000  
+          __CFG_MCLRE$ON 0000                    ?_main 0010            __CFG_WDTE$OFF 0000  
+           main@ledstate 0019                    ltemp0 001C                    ttemp0 001C  
+                  wtemp0 001C                    wtemp1 001E          __initialization 0001  
+           __end_of_main 00C3                   ??_main 0014                   _OPTION 0000  
+__end_of__initialization 0001         main@flashcounter 0016               __pmaintext 0003  
+   end_of_initialization 0001      start_initialization 0001                ___latbits 0000  
+          __pcstackBANK0 0010                 _TRISGPIO 0006          main@lengthcount 0017  
+          __size_of_main 00C0                 main@argc 0010                 main@argv 0012  
+             _OSCCALbits 0005  
