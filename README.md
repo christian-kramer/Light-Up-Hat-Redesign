@@ -59,3 +59,17 @@ I had to do a double-take. Wait, the base is on the *left*?! Oh no, I designed t
 The SOT-23 version's base and emitter are swapped from the TO-92 version's. Gah! What do I do now?
 
 Funny enough, this is actually a common design error, even amongst professionals. So common, in fact, that they apparently make reversed versions of SOT-23 BJTs for exactly this occasion, (though probably for cases where re-spinning boards would cost $$$). A hobbyist-level fix is actually to bend the pins and flip the transistor upside-down. Which worked! The LEDs turned on!
+
+Unfortunately, soon after, I accidentally connected the power leads incorrectly, and destroyed the board with 6 volts reverse polarity. But when I tried assembling another board, two of the PIC10F220's pins bridged with solder. Try as I might, I couldn't get them un-bridged... so I tried making *another*. But that one bridged too! At this point, I got so frustrated I gave up on hand-assembling, and decided to try out a new feature of JLCPCB: their SMT Assembly Service.
+
+The way it works is  you go to [this](https://jlcpcb.com/client/index.html#/parts/componentSearch) page and find each component you need in your schematic. When you click on one, it will give you the description, datasheet, and "LCSC Part #". This part number is what you will specify in your schematic symbol's properties, as "LCSC".
+
+![LCSC](https://i.imgur.com/ILornll.png)
+
+At the end of your design process, when you're ready to export your files for manufacture, there are some extra steps to follow for providing the part coordinates and tooling holes needed, which JLCPCB explains [here](https://support.jlcpcb.com/category/78-smt-assembly).
+
+Finally, the boards arrived, and they looked great! Everything was assembled except for the LEDs, button, and battery pack. And I needed to program them too, of course.
+
+Video of it working on my bench: https://i.imgur.com/HR5HdYS.mp4
+
+Video of it working on my bench, with battery pack: https://i.imgur.com/gJqf0xF.mp4
