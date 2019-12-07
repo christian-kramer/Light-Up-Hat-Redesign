@@ -64,6 +64,8 @@ Unfortunately, soon after, I accidentally connected the power leads incorrectly,
 
 The way it works is  you go to [this](https://jlcpcb.com/client/index.html#/parts/componentSearch) page and find each component you need in your schematic. When you click on one, it will give you the description, datasheet, and "LCSC Part #". This part number is what you will specify in your schematic symbol's properties, as "LCSC".
 
+![Part Search](https://i.imgur.com/xsfA2OF.png)
+
 ![LCSC](https://i.imgur.com/ILornll.png)
 
 At the end of your design process, when you're ready to export your files for manufacture, there are some extra steps to follow for providing the part coordinates and tooling holes needed, which JLCPCB explains [here](https://support.jlcpcb.com/category/78-smt-assembly).
