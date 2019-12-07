@@ -75,3 +75,5 @@ Finally, the boards arrived, and they looked great! Everything was assembled exc
 Video of it working on my bench: https://i.imgur.com/HR5HdYS.mp4
 
 Video of it working on my bench, with battery pack: https://i.imgur.com/gJqf0xF.mp4
+
+Video of completed hat (WARNING: Very bright and flashing lights!): https://i.imgur.com/4RvkQvS.mp4
